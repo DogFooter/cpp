@@ -1,0 +1,48 @@
+#pragma once
+
+#include 
+
+#include 
+
+#define dataMaxSize 65515
+
+#define maxArraySize(x) dataMaxSize/sizeof(x)
+
+
+
+template
+constexpr inline bool verifyIteration(const RqstList& i_pDataList) {
+ ResultList* tm = nullptr;  
+ if (i_pDataList.nTotalNumofRqst == 0)
+  throw std::length_error("no element exist in reqeust");
+ if(i_pDataList.nTotalNumofRqst > maxArraySize(tm->iterContent[0]))
+  throw std::out_of_range("iteration idx exceeded maximum size");
+ return true;
+
+};
+
+template
+
+constexpr inline bool verifyMinMax(const RqstList& i_pDataList) {
+ return true;
+
+};
+
+template
+
+constexpr inline bool verify(const RqstList& i_pDataList) {
+
+verifyIteration(i_pDataList);
+ verifyMinMax(i_pDataList);
+ return true;
+
+}
+
+template
+
+inline bool verifyExceedSize(ResultList& i_pDataList, uint64_t size) {
+ if (sizeof(ResultList) > size )
+  throw std::length_error("result data length exceeded maximum size");
+ return true;
+
+}
